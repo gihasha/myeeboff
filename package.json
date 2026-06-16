@@ -1,0 +1,32 @@
+{
+  "name": "dasun-kalhara-official",
+  "version": "1.0.0",
+  "private": true,
+
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start"
+  },
+
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.500.0",
+    "@prisma/client": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.5.1",
+    "next-auth": "^5.0.0-beta.25",
+    "zod": "^3.24.1"
+  },
+
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.1",
+    "autoprefixer": "^10.4.20",
+    "prisma": "^6.0.1"
+  }
+}
