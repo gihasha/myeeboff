@@ -1,0 +1,46 @@
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+
+export async function POST(req: Request) {
+
+  const body = await req.json();
+
+  await prisma.contactRequest.create({
+    data: {
+      name: body.name,
+      email: body.email,
+      whatsapp: body.whatsapp,
+      service: body.service,
+      description: body.description
+    }
+  });
+
+  const message = `
+🔥 New Request
+
+👤 Name: ${body.name}
+📧 Email: ${body.email}
+📱 WhatsApp: ${body.whatsapp}
+🛠 Service: ${body.service}
+
+${body.description}
+`;
+
+  await fetch(
+    `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        chat_id: process.env.TELEGRAM_CHAT_ID,
+        text: message
+      })
+    }
+  );
+
+  return NextResponse.json({
+    success:true
+  });
+}
