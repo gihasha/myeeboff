@@ -2,7 +2,10 @@ import "./globals.css";
 
 export const metadata = {
   title: "Dasun Kalhara Official",
-  description: "Official Website"
+  description: "Professional Digital Services",
+  icons: {
+    icon: "/favicon.ico"
+  }
 };
 
 export default function RootLayout({
