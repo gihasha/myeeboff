@@ -1,8 +1,9 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 
-export default function Login() {
+export default function LoginPage() {
 
   const [email,setEmail] =
     useState("");
@@ -12,61 +13,48 @@ export default function Login() {
 
   async function login() {
 
-    const res =
-      await fetch(
-        "/api/login",
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":
-            "application/json"
-          },
-          body:JSON.stringify({
-            email,
-            password
-          })
-        }
-      );
+    await signIn(
+      "credentials",
+      {
+        email,
+        password,
+        callbackUrl:
+          "/dashboard"
+      }
+    );
 
-    if(res.ok){
-      window.location.href =
-      "/dashboard";
-    }
   }
 
   return (
+
     <div className="min-h-screen flex items-center justify-center">
 
-      <div className="w-[400px] bg-zinc-900 p-8 rounded-xl">
+      <div className="glass p-8 rounded-3xl w-[400px]">
 
-        <h1 className="text-3xl mb-6">
+        <h1 className="text-3xl font-bold mb-5">
           Login
         </h1>
 
         <input
-          className="w-full p-3 bg-zinc-800 mb-4"
           placeholder="Email"
+          className="w-full p-3 rounded-xl bg-slate-900 mb-4"
           onChange={(e)=>
-            setEmail(
-              e.target.value
-            )
+            setEmail(e.target.value)
           }
         />
 
         <input
           type="password"
-          className="w-full p-3 bg-zinc-800 mb-4"
           placeholder="Password"
+          className="w-full p-3 rounded-xl bg-slate-900 mb-4"
           onChange={(e)=>
-            setPassword(
-              e.target.value
-            )
+            setPassword(e.target.value)
           }
         />
 
         <button
           onClick={login}
-          className="w-full bg-white text-black p-3 rounded-xl"
+          className="neon-btn w-full py-3"
         >
           Login
         </button>
@@ -75,4 +63,4 @@ export default function Login() {
 
     </div>
   );
-                              }
+          }
