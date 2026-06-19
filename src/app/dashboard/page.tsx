@@ -1,12 +1,29 @@
-<div className="glass p-6 rounded-2xl">
+export default function DashboardPage() {
+  return (
+    <div className="min-h-screen p-10">
 
-  <img
-    src="/profile.png"
-    className="w-28 h-28 rounded-full mx-auto"
-  />
+      <h1 className="text-4xl font-bold neon-text mb-8">
+        Dashboard
+      </h1>
 
-  <h2 className="text-center mt-4">
-    Dasun Kalhara
-  </h2>
+      <div className="glass p-6 rounded-2xl max-w-md">
 
-</div>
+        <img
+          src="/profile.png"
+          alt="Profile"
+          className="w-28 h-28 rounded-full mx-auto"
+        />
+
+        <h2 className="text-center mt-4 text-xl font-bold">
+          Dasun Kalhara
+        </h2>
+
+        <p className="text-center text-zinc-400 mt-2">
+          Administrator
+        </p>
+
+      </div>
+
+    </div>
+  );
+}
