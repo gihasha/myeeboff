@@ -34,6 +34,8 @@ export async function POST(req: Request) {
           password
         }
       });
+    
+    console.log("USER CREATED");
 
     return NextResponse.json({
       success: true,
